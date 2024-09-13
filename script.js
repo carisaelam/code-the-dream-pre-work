@@ -1,43 +1,60 @@
-// Fetching API data
-const endpoint = 'https://api.artic.edu/api/v1/artworks';
-const id = 263154;
-const fields = '?fields=title,id,image_id';
-const url = `${endpoint}/${id}/${fields}`;
-const image_request_params = 'full/843,/0/default.jpg';
+const ENDPOINT = 'https://api.artic.edu/api/v1/artworks';
+const IMAGE_REQUEST_PARAMS = 'full/843,/0/default.jpg';
 
+const id = 26314;
+const fields = '?fields=title,id,image_id,artist_title,color';
+const url = `${ENDPOINT}/${id}/${fields}`;
+
+// Retrieves all art from API. Useful as a helper.
 async function getAllArt() {
   const response = await fetch(url);
   const data = await response.json();
   console.log(data);
 }
 
-async function getArtId() {
+// Builds object representing a single image
+async function buildImageInfo() {
   try {
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`${response.status}`);
     }
     const data = await response.json();
-    const image_id = data.data.image_id;
+
+    // Attributes of image
+    const imageId = data.data.image_id;
+    const title = data.data.title;
+    const artist = data.data.artist_title;
+    const color = data.data.color;
     const config = data.config.iiif_url;
-    const image_url = `${config}/${image_id}/${image_request_params}`;
-    return image_url;
+
+    const imageUrl = `${config}/${imageId}/${IMAGE_REQUEST_PARAMS}`;
+    const imageInfo = { url: imageUrl, title: title, artist: artist };
+    return imageInfo;
   } catch (error) {
     console.error(error);
     return null;
   }
 }
 
-getArtId()
-  .then((imageUrl) => {
-    if (imageUrl) {
-      const artContainer = document.querySelector('.art__container');
+// Calls buildImageInfo and inserts fetched image into artContainer div
+function displayArt() {
+  buildImageInfo()
+    .then((imageInfo) => {
+      if (imageInfo) {
+        const artContainer = document.querySelector('.art__container');
 
-      artContainer.innerHTML = `<img src='${imageUrl}'>`;
-    } else {
-      console.error(`Invalid image URL.`);
-    }
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+        artContainer.innerHTML = `
+            <img src='${imageInfo.url}'>
+            <h3>${imageInfo.title}</h3>
+            <p>${imageInfo.artist}</p>
+
+            `;
+      } else {
+        console.error(`Invalid image URL.`);
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
