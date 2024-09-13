@@ -70,4 +70,33 @@ h6 {
 
 /* END CSS RESET */
 
+.art__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  flex-direction: row;
+  background: linear-gradient(
+    126deg,
+    rgba(101, 94, 227, 1) 0%,
+    rgba(9, 18, 121, 1) 100%
+  );
+  padding: 3rem;
+}
 
+.artwork__container {
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.item__image__container {
+  max-width: 40rem;
+  height: auto;
+  border: 0.5rem inset rgb(122, 118, 118);
+  border-radius: 0.25rem;
+}

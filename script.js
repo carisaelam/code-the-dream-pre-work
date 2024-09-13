@@ -131,7 +131,7 @@ function getKeyword(event) {
 // Display a single image and set background color
 function displaySingleImage(image) {
   if (image) {
-    const artContainer = document.querySelector('.art__container');
+    const artContainer = document.querySelector('.keyword__art__container');
     const body = document.querySelector('.body');
 
     artContainer.innerHTML = `
