@@ -1,7 +1,8 @@
 // Constants
 const ENDPOINT = 'https://api.artic.edu/api/v1/artworks';
 const IMAGE_REQUEST_PARAMS = 'full/843,/0/default.jpg';
-const FIELDS = 'fields=title,id,image_id,artist_title,color,subject_titles';
+const FIELDS =
+  'fields=title,id,image_id,artist_title,color,subject_title,theme_titles,colorfulness,description';
 
 // Variables
 let topImages = [];
@@ -27,7 +28,7 @@ function randomItemFromArray(array) {
 // Retrieve all art from API
 async function getAllArt() {
   try {
-    const url = `${ENDPOINT}/26314/?${FIELDS}`;
+    const url = `${ENDPOINT}/?${FIELDS}`;
     const data = await fetchData(url);
     console.log(data);
   } catch (error) {
@@ -38,17 +39,33 @@ async function getAllArt() {
 // Build object representing a single image
 async function buildImageInfo() {
   try {
-    const url = `${ENDPOINT}/26314/?${FIELDS}`;
+    const url = `${ENDPOINT}/?${FIELDS}`;
     console.log(`Running buildImageInfo with URL: ${url}`);
 
     const data = await fetchData(url);
-    const { image_id: imageId, title, artist_title: artist, color } = data.data;
+    const {
+      id,
+      image_id: imageId,
+      title,
+      artist_title: artist,
+      color,
+      subject_title: subjectTitle,
+      theme_titles: themeTitle,
+      colorfulness,
+      description,
+    } = data.data;
     const { iiif_url: config } = data.config;
 
     return {
       url: buildImageUrl(config, imageId),
+      id,
       title,
       artist,
+      color,
+      subjectTitle,
+      themeTitle,
+      colorfulness,
+      description,
     };
   } catch (error) {
     console.error('Error building image info:', error);
@@ -81,9 +98,14 @@ async function buildKeywordSearchImageInfo(searchUrl) {
     // Only selects from the top 10 images in the search
     topImages = allImages.slice(0, 10).map((image) => ({
       url: buildImageUrl(config, image.image_id),
+      id: image.id,
       title: image.title,
       artist: image.artist_title,
       color: image.color,
+      description: image.description,
+      subjectTitle: image.subjectTitle,
+      themeTitle: image.themeTitle,
+      colorfulness: image.colorfulness,
     }));
 
     console.log('Searched images:', topImages);
@@ -110,15 +132,24 @@ function getKeyword(event) {
 function displaySingleImage(image) {
   if (image) {
     const artContainer = document.querySelector('.art__container');
-    const mainContainer = document.querySelector('.main__container');
+    const body = document.querySelector('.body');
 
     artContainer.innerHTML = `
       <img src="${image.url}" alt="${image.title}">
-      <h3>${image.title}</h3>
-      <p>${image.artist}</p>
-      <p>hsl(${image.color.h}, ${image.color.s}%, ${image.color.l}%)</p>
+      
+       <h3>${image.title}</h3>    
+     
+      
+       <a href="http://www.google.com/search?q=${encodeURIComponent(image.artist)}" target="_blank">
+         <p>${image.artist}</p>    
+       </a>
+
+       <a href="https://www.artic.edu/artworks/${image.id}/" target="_blank">
+         <p>Learn More</p>    
+       </a>
+      
     `;
-    mainContainer.style.backgroundColor = `hsl(${image.color.h}, ${image.color.s}%, ${image.color.l}%)`;
+    body.style.backgroundColor = `hsl(${image.color.h}, ${image.color.s}%, ${image.color.l}%)`;
   } else {
     console.error('Invalid image info.');
   }
