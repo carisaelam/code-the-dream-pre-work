@@ -14,9 +14,19 @@
         <p>Find art to match your vibe.</p>
       </hgroup>
     </header>
-    <main>
-      <h2>Your art:</h2>
-      <div class="art__container"></div>
+    <main class="main__container">
+      <section class="input__form__container">
+        <form class="search__form">
+          <label for="keyword__input">Keyword: </label>
+          <input type="text" name="keyword" id="keyword__input" />
+
+          <input type="submit" value="Submit" />
+        </form>
+      </section>
+      <section class="display__container">
+        <h2>Your art:</h2>
+        <div class="art__container"></div>
+      </section>
     </main>
     <footer></footer>
     <script src="script.js"></script>
