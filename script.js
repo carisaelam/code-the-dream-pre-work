@@ -73,6 +73,7 @@ function getKeyword(e) {
   const newKeyword = input.value;
 
   buildKeywordSearchUrl(newKeyword);
+  input.value = '';
 }
 
 searchForm.addEventListener('submit', getKeyword);
@@ -84,7 +85,7 @@ function buildKeywordSearchUrl(keyword) {
   buildKeywordSearchImageInfo(searchUrl);
 }
 
-const searchedImages = [];
+let searchedImages = [];
 
 async function buildKeywordSearchImageInfo(searchUrl) {
   console.log(`buildKeywordSearchImageInfo by: ${searchUrl}`);
@@ -139,4 +140,5 @@ function displaySingleImage(image) {
   } else {
     console.error(`Invalid image URL.`);
   }
+  searchedImages = [];
 }
