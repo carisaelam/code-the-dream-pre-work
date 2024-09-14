@@ -2,6 +2,9 @@
 
 const artContainer = document.querySelector('.art__container');
 const artistTitle = document.querySelector('.artist__gallery__title');
+const galleryDescriptionContainer = document.querySelector(
+  '.gallery__description__container'
+);
 const galleryForm = document.querySelector('.gallery__form');
 let galleryFormInput = document.getElementById('gallery__form__input');
 
@@ -55,22 +58,30 @@ function buildImageUrl(config, imageId) {
   return `${config}/${imageId}/${IMAGE_REQUEST_PARAMS}`;
 }
 
-function displayArt(list) {
-  artContainer.innerHTML = '';
-  list.forEach((item) => {
-    const itemDiv = document.createElement('div');
-    itemDiv.classList.add('artwork__container');
-    itemDiv.innerHTML = `
-      <div class="item__image__container"> 
-        
+const displayArtDirectionsHTML =
+  'Click on each image to learn more about the artwork!';
+
+function displayArtHTML(item) {
+  return `
+      <div class="gallery__image__container"> 
         <a href="pages/display.html?image_id=${item.imageId}&id=${item.id}">
-          <img src="${IMAGE_CONFIG}/${item.imageId}/full/843,/0/default.jpg" alt="${item.title}" class="item__image" >
+          <img src="${IMAGE_CONFIG}/${item.imageId}/full/843,/0/default.jpg" alt="${item.title}" class="gallery__image" >
         </a>
       </div>
-      <h3 class="item__title">${item.title}</h3>      
-      <h3 class="item__artist">${item.artist}</h3>      
-
+      <div class="gallery__image__information__container">
+        <h3 class="gallery__image__title">${item.title}</h3>      
+        <p class="gallery__image__artist">${item.artist}</p>      
+      </div>
     `;
+}
+
+function displayArt(list) {
+  artContainer.innerHTML = '';
+  galleryDescriptionContainer.textContent = displayArtDirectionsHTML;
+  list.forEach((item) => {
+    const itemDiv = document.createElement('div');
+    itemDiv.classList.add('gallery__artwork__container');
+    itemDiv.innerHTML = displayArtHTML(item);
     artContainer.appendChild(itemDiv);
   });
   artList = [];
