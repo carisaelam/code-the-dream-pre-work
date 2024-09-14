@@ -101,7 +101,7 @@ function displaySingleImage(image) {
 
     let descriptionHTML = `<p>No description available. </p><a href="https://www.artic.edu/artworks/${image.id}/" target="_blank">
     <p>Learn More Here!</p>    
-  </a>;`;
+  </a>`;
     if (image.description) {
       descriptionHTML = ` <h3>Description</h3>
       <p>${image.description}</p>`;
@@ -112,8 +112,6 @@ function displaySingleImage(image) {
       subjectTitleHTML = `<h3>Subject Title</h3>
       <p>${image.subjectTitle}</p>`;
     }
-
- 
 
     artContainer.innerHTML = `
       <img src="${image.url}" alt="${image.title}">
