@@ -2,10 +2,12 @@
 
 const artContainer = document.querySelector('.art__container');
 const artistTitle = document.querySelector('.artist__gallery__title');
+const galleryForm = document.querySelector('.gallery__form');
+let galleryFormInput = document.getElementById('gallery__form__input');
 
 let artList = [];
-let searchTerm = 'Claude Monet';
-let limit = 3;
+let searchTerm = '';
+let limit = 10;
 const IMAGE_CONFIG = 'https://www.artic.edu/iiif/2';
 
 async function getArtByArtist() {
@@ -42,6 +44,8 @@ function buildArtInfoObject(art) {
     }
   });
   displayArt(artList);
+  artList = [];
+  console.log(artList);
 }
 
 function buildImageUrl(config, imageId) {
@@ -49,6 +53,7 @@ function buildImageUrl(config, imageId) {
 }
 
 function displayArt(list) {
+  artContainer.innerHTML = '';
   list.forEach((item) => {
     const itemDiv = document.createElement('div');
     itemDiv.classList.add('artwork__container');
@@ -65,6 +70,29 @@ function displayArt(list) {
     `;
     artContainer.appendChild(itemDiv);
   });
+  artList = [];
 }
 
-handleArtByArtist();
+// Event listeners
+
+galleryForm.addEventListener('submit', handleSubmit);
+
+function handleSubmit(e) {
+  e.preventDefault();
+
+  searchTerm = galleryFormInput.value;
+
+  console.log('start of handleSubmit');
+  console.log('searchTerm', searchTerm);
+  console.log('artList', artList);
+  console.log('galleryFormInput.value', galleryFormInput.value);
+
+  handleArtByArtist();
+  searchTerm = '';
+  galleryFormInput.value = '';
+
+  console.log('after handleSubmit');
+  console.log('searchTerm', searchTerm);
+  console.log('artList', artList);
+  console.log('galleryFormInput.value', galleryFormInput.value);
+}
