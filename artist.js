@@ -63,7 +63,7 @@ function displayArt(list) {
     itemDiv.innerHTML = `
       <div class="item__image__container"> 
         
-        <a href="https://www.artic.edu/artworks/${item.id}/" target="_blank">
+        <a href="display.html?image_id=${item.imageId}&id=${item.id}" target="_blank">
           <img src="${IMAGE_CONFIG}/${item.imageId}/full/843,/0/default.jpg" alt="${item.title}" class="item__image" >
         </a>
       </div>

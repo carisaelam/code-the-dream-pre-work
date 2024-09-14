@@ -4,6 +4,7 @@ const IMAGE_REQUEST_PARAMS = 'full/843,/0/default.jpg';
 const FIELDS =
   'fields=title,id,image_id,artist_title,color,subject_title,theme_titles,colorfulness,description';
 
+
 // Variables
 let topImages = [];
 
