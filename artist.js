@@ -5,6 +5,9 @@ const artistTitle = document.querySelector('.artist__gallery__title');
 const galleryForm = document.querySelector('.gallery__form');
 let galleryFormInput = document.getElementById('gallery__form__input');
 
+const limitForm = document.querySelector('.limit__form');
+let limitFormInput = document.getElementById('limit__form__input');
+
 let artList = [];
 let searchTerm = '';
 let limit = 10;
@@ -13,7 +16,7 @@ const IMAGE_CONFIG = 'https://www.artic.edu/iiif/2';
 async function getArtByArtist() {
   try {
     const response = await fetch(
-      `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}&fields=artist_title,image_id,id,title&limit=100`
+      `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}&fields=artist_title,image_id,id,title&limit=${limit}`
     );
     const data = await response.json();
     const { iiif_url: config } = data.config;
@@ -75,24 +78,17 @@ function displayArt(list) {
 
 // Event listeners
 
-galleryForm.addEventListener('submit', handleSubmit);
+galleryForm.addEventListener('submit', handleGalleryFormSubmit);
 
-function handleSubmit(e) {
+// Event handlers
+
+function handleGalleryFormSubmit(e) {
   e.preventDefault();
 
   searchTerm = galleryFormInput.value;
-
-  console.log('start of handleSubmit');
-  console.log('searchTerm', searchTerm);
-  console.log('artList', artList);
-  console.log('galleryFormInput.value', galleryFormInput.value);
+  limit = limitFormInput.value;
 
   handleArtByArtist();
   searchTerm = '';
   galleryFormInput.value = '';
-
-  console.log('after handleSubmit');
-  console.log('searchTerm', searchTerm);
-  console.log('artList', artList);
-  console.log('galleryFormInput.value', galleryFormInput.value);
 }

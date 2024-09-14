@@ -15,14 +15,30 @@
       </hgroup>
     </header>
     <main>
-      <section class="gallery__form__container"></section>
+      <section class="gallery__form__container">
         <form class="gallery__form">
           <label for="gallery__form__input">Keyword: </label>
-          <input type="text" name="gallery__form__input" id="gallery__form__input" />
+          <input
+            type="text"
+            name="gallery__form__input"
+            id="gallery__form__input"
+          />
+
+
+        
+        
+          <label for="limit__form__input">Limit: </label>
+          <select id="limit__form__input" name="limit__form__input">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
 
           <input type="submit" value="Submit" />
         </form>
       </section>
+
       <p>Click on each image to learn more about the artwork!</p>
       <div class="art__container"></div>
     </main>
