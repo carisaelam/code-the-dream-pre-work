@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="assets/color-icon.png" type="image/x-icon" />
+    <title>Random</title>
+  </head>
+  <body class="body">
+    <header>
+      <hgroup>
+        <h1>Random</h1>
+        <p>
+          Type in a word and click Submit to begin! You will see one random
+          piece of artwork that matches your search term. You will also see the
+          background of this webpage change colors to match the vibe of the
+          artwork!
+        </p>
+        <p>
+          Don't like the particular image, or not getting any hits? Just search
+          it again, and you might find something new!
+        </p>
+        <p>Not sure where to start? Here are some example search terms:</p>
+        <ul>
+          <li>Sunrise</li>
+          <li>Dali</li>
+          <li>Horse</li>
+        </ul>
+        <a href="index.html"><p>Home</p></a>
+      </hgroup>
+    </header>
+    <main>
+      <section class="input__form__container">
+        <form class="search__form">
+          <label for="keyword__input">Keyword: </label>
+          <input type="text" name="keyword" id="keyword__input" />
+
+          <input type="submit" value="Submit" />
+        </form>
+      </section>
+      <section class="display__container">
+        <h2>Your art:</h2>
+        <div class="keyword__art__container"></div>
+      </section>
+    </main>
+    <footer></footer>
+    <script src="random.js"></script>
+  </body>
+</html>

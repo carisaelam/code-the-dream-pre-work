@@ -5,48 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="assets/color-icon.png" type="image/x-icon" />
-    <title>Vibe Gallery</title>
+    <title>Gallery View</title>
   </head>
-  <body class="body">
+  <body>
     <header>
       <hgroup>
-        <h1>Vibe Gallery</h1>
-        <p>
-          Type in a word and click Submit to begin! You will see one piece of
-          artwork that matches your search term. You will also see the
-          background of this webpage change colors to match the vibe of the
-          artwork!
-        </p>
-        <p>
-          Don't like the particular image, or not getting any hits? Just search it again, and you might
-          find something new!
-        </p>
-        <p>
-          Not sure where to start? Here are some example search terms: 
-        </p>
-        <ul>
-          <li>Sunrise</li>
-          <li>Dali</li>
-          <li>Horse</li>
-        </ul>
-        <a href="artist.html"><h2>Artist Highlight - Claude Monet</h2></a>
+        <h1 class="artist__gallery__title">Gallery View</h1>
+        <a href="index.html">Home</a>
+        <a href="random.html">Random</a>
       </hgroup>
     </header>
     <main>
-      <section class="input__form__container">
-        <form class="search__form">
-          <label for="keyword__input">Keyword: </label>
-          <input type="text" name="keyword" id="keyword__input" />
+      <section class="gallery__form__container">
+        <form class="gallery__form">
+          <label for="gallery__form__input">Keyword: </label>
+          <input
+            type="text"
+            name="gallery__form__input"
+            id="gallery__form__input"
+          />
+
+
+        
+        
+          <label for="limit__form__input">Limit: </label>
+          <select id="limit__form__input" name="limit__form__input">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
 
           <input type="submit" value="Submit" />
         </form>
       </section>
-      <section class="display__container">
-        <h2>Your art:</h2>
-        <div class="keyword__art__container"></div>
-      </section>
+
+      <p>Click on each image to learn more about the artwork!</p>
+      <div class="art__container"></div>
     </main>
-    <footer></footer>
-    <script src="script.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
