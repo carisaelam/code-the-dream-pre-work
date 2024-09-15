@@ -126,12 +126,15 @@ function displaySingleImage(image) {
       <div class="display__art__image__container">
         <img src="${image.url}" alt="${image.title}">
       </div>
-
+     
+      
       <div class="display__art__details__container">
+        <div class="display__art__details__title__container">
+          <h2>${image.title}</h2>
+        </div>
         <div class="display__art__artist__container">
           <a href="http://www.google.com/search?q=${encodeURIComponent(image.artist)}" target="_blank">
-          <p>${image.artist}</p>
-          </h3>
+          <h3>${image.artist}</h3>
           </a>
         </div>
         <div class="display__art__description__container">
