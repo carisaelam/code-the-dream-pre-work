@@ -195,6 +195,10 @@ form select {
   border: none;
 }
 
+form select label {
+  margin-right: .25rem;
+}
+
 .gallery__form__submit {
   display: flex;
   justify-content: center;
@@ -205,9 +209,11 @@ form select {
   width: 100%;
   margin-top: 0.75rem;
   border: 1px solid grey;
-  border-radius: 1.75rem;
+  border-radius: .5rem;
   color: white;
   background-color: rgb(84, 84, 243);
+  padding: .5rem;
+  font-weight: bold;
 }
 
 .gallery__form__submit input:hover {
