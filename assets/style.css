@@ -128,7 +128,7 @@ hgroup {
 
 hgroup .header__title__container,
 .display__header__title {
-  font-size: clamp(1rem, 1rem + 3vw, 3rem);
+  font-size: clamp(1rem, 1rem + 1vw, 2rem);
 }
 
 .header__links__container {
@@ -176,10 +176,10 @@ hgroup .header__title__container,
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 1.5rem;
+  border-radius: .5rem;
   border: none;
   background-color: white;
-  padding: 0 0.75rem;
+  padding: 0 0.5rem;
 }
 
 .form__element i {
@@ -191,7 +191,7 @@ form input {
 }
 
 form select {
-  padding: 0.35rem 0;
+  padding: 0.5rem 0;
   border: none;
 }
 
