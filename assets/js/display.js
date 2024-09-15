@@ -65,7 +65,7 @@ async function buildImageInfo(imageUrl) {
 // Display art in the container
 function displayArt(imageInfo) {
   if (imageInfo) {
-    const artContainer = document.querySelector('.art__container');
+    const artContainer = document.querySelector('.display__art__container');
     artContainer.innerHTML = `
       <img src="${imageInfo.url}" alt="${imageInfo.title}">
       <h3>${imageInfo.title}</h3>
@@ -96,14 +96,18 @@ async function buildKeywordSearchImageInfo(searchUrl) {
 function displaySingleImage(image) {
   console.log('displaying single image:', image);
   if (image) {
-    const artContainer = document.querySelector('.keyword__art__container');
+    const artContainer = document.querySelector('.display__art__container');
+    const displayContainer = document.querySelector('.display__container');
+    const displayHeaderTitle = document.querySelector('.display__header__title')
     const body = document.querySelector('.body');
 
     let descriptionHTML = `
-    <p>No description available. </p>
-    <a href="https://www.artic.edu/artworks/${image.id}/" target="_blank">
-      <p>Learn More Here!</p>    
-    </a>
+    <div class="display__no__description__container">
+      <p>No description available. </p>
+      <a href="https://www.artic.edu/artworks/${image.id}/" target="_blank">
+        <p>Learn More Here!</p>
+      </a>
+    </div>
     `;
 
     if (image.description) {
@@ -118,18 +122,31 @@ function displaySingleImage(image) {
     }
 
     artContainer.innerHTML = `
-      <img src="${image.url}" alt="${image.title}">
-       <h3>${image.title}</h3>    
-      
-       <a href="http://www.google.com/search?q=${encodeURIComponent(image.artist)}" target="_blank">
-         <p>${image.artist}</p>    
-       </a>
+    
+      <div class="display__art__image__container">
+        <img src="${image.url}" alt="${image.title}">
+      </div>
 
-       ${descriptionHTML}
-       ${subjectTitleHTML}
+      <div class="display__art__details__container">
+        <div class="display__art__artist__container">
+          <a href="http://www.google.com/search?q=${encodeURIComponent(image.artist)}" target="_blank">
+          <p>${image.artist}</p>
+          </h3>
+          </a>
+        </div>
+        <div class="display__art__description__container">
+          ${descriptionHTML}
+        </div>
+        
+        <div class="display__art__subject__title__container">
+          ${subjectTitleHTML}
+        </div>
+      </div>
 
     `;
-    body.style.backgroundColor = `hsl(${image.color.h}, ${image.color.s}%, ${image.color.l}%)`;
+    displayContainer.style.backgroundColor = `hsl(${image.color.h}, ${image.color.s}%, ${image.color.l}%)`;
+
+    displayHeaderTitle.textContent = `${image.title}`
   } else {
     console.error('Invalid image info.');
   }

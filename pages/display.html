@@ -17,20 +17,26 @@
   </head>
   <body class="body">
     <header>
-      <hgroup>
-        <h1>Display</h1>
-        <p>
-          Here is the art you selected! You will also notice the background of
-          this webpage changed colors to match the vibe of the artwork!
-        </p>
-
-        <a href="../index.html"><h2>Back to the Search Gallery</h2></a>
+      <hgroup class="display__header__group">
+        <div class="display__header__title__container">
+          <h1 class="display__header__title"></h1>
+        </div>
+        <div class="header__links__container">
+          <a href="../index.html" class="link__button display__link__button"
+            ><p>Home</p></a
+          >
+        </div>
       </hgroup>
     </header>
     <main>
+      <div class="display__header__description__container">
+        <p class="display__header__description">
+          Here is the art you selected! You will also notice the background of
+          this webpage changed colors to match the vibe of the artwork!
+        </p>
+      </div>
       <section class="display__container">
-        <h2>Your art:</h2>
-        <div class="keyword__art__container"></div>
+        <div class="display__art__container"></div>
       </section>
     </main>
     <footer></footer>
