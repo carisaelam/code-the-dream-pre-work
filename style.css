@@ -164,6 +164,8 @@ header {
 .gallery__form__container {
   margin-top: 1.5rem;
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
   justify-content: center;
   align-items: center;
   width: 100%;

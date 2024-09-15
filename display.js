@@ -105,7 +105,7 @@ function displaySingleImage(image) {
         <div class="display__art__description__container">
           ${descriptionHTML}
         </div>
-        
+ 
       </div>
 
     `;

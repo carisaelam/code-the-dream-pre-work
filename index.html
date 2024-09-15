@@ -6,8 +6,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
     />
-    <link rel="stylesheet" href="/assets/style.css" />
-    <link rel="icon" href="assets/color-icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="./assets/color-icon.png" type="image/x-icon" />
     <link
       href="https://fonts.googleapis.com/css?family=Quattrocento:regular,700"
       rel="stylesheet"
@@ -25,7 +25,7 @@
   <body>
     <header class="index__header">
       <div class="header__title__container">
-        <a href="/index.html"><h1 class="gallery__title">Search Art!</h1></a>
+        <a href="index.html"><h1 class="gallery__title">Search Art!</h1></a>
       </div>
     </header>
     <main>
@@ -58,10 +58,16 @@
             <input type="submit" value="Submit" />
           </div>
         </form>
+        <div class="gallery__search__instructions">
+          <p>
+            Try searching something like: <em>"Picasso"</em> or
+            <em>"towns"</em>
+          </p>
+        </div>
       </section>
       <section class="gallery__description__container"></section>
       <section class="art__container"></section>
     </main>
-    <script src="assets/js/index.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>

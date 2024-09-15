@@ -22,7 +22,7 @@ const noArtToDisplayText = 'No art to display. Try a different search.';
 function displayArtHTML(item) {
   return `
       <div class="gallery__image__container"> 
-        <a href="pages/display.html?image_id=${item.imageId}&id=${item.id}">
+        <a href="display.html?image_id=${item.imageId}&id=${item.id}">
           <img src="${image_config}/${item.imageId}/full/843,/0/default.jpg" alt="${item.title}" class="gallery__image" >
         </a>
       </div>
