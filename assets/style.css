@@ -126,9 +126,18 @@ hgroup {
   align-items: center;
 }
 
-hgroup .header__title__container {
+.header__title__container {
   font-size: clamp(1rem, 1rem + 1vw, 2rem);
   padding: 1rem;
+}
+
+.header__title__container a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header__title__container a:hover {
+  cursor: pointer;
 }
 
 .header__links__container {
@@ -313,9 +322,8 @@ form select label {
 .display__header__description__container {
   display: flex;
   justify-content: center;
-  font-size: clamp(.5rem, .5rem + 1vw, 1rem);
+  font-size: clamp(0.5rem, 0.5rem + 1vw, 1rem);
 }
-
 
 .display__header__description {
   display: flex;
@@ -456,13 +464,12 @@ form select label {
 
   .display__art__description__container {
     display: flex;
-    gap: .25rem; 
+    gap: 0.25rem;
     flex-direction: column;
   }
 
   .display__no__description__container {
     text-align: left;
     font-size: clamp(0.5rem, 0.5rem + 1vw, 1rem);
-  
   }
 }

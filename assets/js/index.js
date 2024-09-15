@@ -1,20 +1,21 @@
-// ARTIST SEARCH
+// Variables
+const IMAGE_CONFIG = 'https://www.artic.edu/iiif/2';
+let artList = [];
+let searchTerm = '';
+let limit = 10;
 
+// Document elements
 const artContainer = document.querySelector('.art__container');
-const artistTitle = document.querySelector('.artist__gallery__title');
 const galleryDescriptionContainer = document.querySelector(
   '.gallery__description__container'
 );
 const galleryForm = document.querySelector('.gallery__form');
-let galleryFormInput = document.getElementById('gallery__form__input');
-
+const galleryFormInput = document.getElementById('gallery__form__input');
 const limitForm = document.querySelector('.limit__form');
-let limitFormInput = document.getElementById('limit__form__input');
-
-let artList = [];
-let searchTerm = '';
-let limit = 10;
-const IMAGE_CONFIG = 'https://www.artic.edu/iiif/2';
+const limitFormInput = document.getElementById('limit__form__input');
+const displayArtDirectionsHTML =
+  'Click on each image to learn more about the artwork!';
+const noArtToDisplayText = 'No art to display. Try a different search.';
 
 async function getArtByArtist() {
   try {
@@ -22,7 +23,6 @@ async function getArtByArtist() {
       `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}&fields=artist_title,image_id,id,title&limit=${limit}`
     );
     const data = await response.json();
-    const { iiif_url: config } = data.config;
 
     const art = data.data;
     return art;
@@ -49,17 +49,12 @@ function buildArtInfoObject(art) {
       artList.push(artInfo);
     }
   });
-  displayArt(artList);
-  artList = [];
-  console.log(artList);
+  if (artList.length > 0) {
+    displayArt(artList);
+  } else {
+    alert(noArtToDisplayText);
+  }
 }
-
-function buildImageUrl(config, imageId) {
-  return `${config}/${imageId}/${IMAGE_REQUEST_PARAMS}`;
-}
-
-const displayArtDirectionsHTML =
-  'Click on each image to learn more about the artwork!';
 
 function displayArtHTML(item) {
   return `
@@ -87,11 +82,8 @@ function displayArt(list) {
   artList = [];
 }
 
-// Event listeners
-
-galleryForm.addEventListener('submit', handleGalleryFormSubmit);
-
 // Event handlers
+galleryForm.addEventListener('submit', handleGalleryFormSubmit);
 
 function handleGalleryFormSubmit(e) {
   e.preventDefault();
