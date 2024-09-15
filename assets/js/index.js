@@ -100,6 +100,4 @@ function handleGalleryFormSubmit(e) {
   limit = limitFormInput.value;
 
   handleArtByArtist();
-  searchTerm = '';
-  galleryFormInput.value = '';
 }
