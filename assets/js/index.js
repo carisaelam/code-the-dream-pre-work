@@ -1,5 +1,5 @@
 // Variables
-const IMAGE_CONFIG = 'https://www.artic.edu/iiif/2';
+const image_config = 'https://www.artic.edu/iiif/2';
 let artList = [];
 let searchTerm = '';
 let limit = 10;
@@ -60,7 +60,7 @@ function displayArtHTML(item) {
   return `
       <div class="gallery__image__container"> 
         <a href="pages/display.html?image_id=${item.imageId}&id=${item.id}">
-          <img src="${IMAGE_CONFIG}/${item.imageId}/full/843,/0/default.jpg" alt="${item.title}" class="gallery__image" >
+          <img src="${image_config}/${item.imageId}/full/843,/0/default.jpg" alt="${item.title}" class="gallery__image" >
         </a>
       </div>
       <div class="gallery__image__information__container">

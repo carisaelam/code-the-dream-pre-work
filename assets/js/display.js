@@ -3,20 +3,16 @@ const urlParams = new URLSearchParams(queryString);
 const imageId = urlParams.get('image_id');
 const id = urlParams.get('id');
 
-console.log('id', id);
-
 // Constants
 const ENDPOINT = 'https://api.artic.edu/api/v1/artworks';
 const IMAGE_REQUEST_PARAMS = 'full/843,/0/default.jpg';
 const FIELDS =
   'fields=title,id,image_id,artist_title,color,subject_title,theme_titles,colorfulness,description';
-const IMAGE_CONFIG = 'https://www.artic.edu/iiif/2';
 
 // Variables
 let topImages = [];
 let searchUrl = `${ENDPOINT}/${id}/?${FIELDS}`;
 
-console.log('searchUrl', searchUrl);
 
 // Helper Functions
 async function fetchData(url) {
@@ -79,12 +75,10 @@ function displayArt(imageInfo) {
 // Build and display image based on search keywords
 async function buildKeywordSearchImageInfo(searchUrl) {
   try {
-    console.log(`Running buildKeywordSearchImageInfo with URL: ${searchUrl}`);
     const data = await fetchData(searchUrl);
 
     const image = data.data;
 
-    console.log('image', image);
 
     displayArt(image);
   } catch (error) {
@@ -94,11 +88,12 @@ async function buildKeywordSearchImageInfo(searchUrl) {
 
 // Display a single image and set background color
 function displaySingleImage(image) {
-  console.log('displaying single image:', image);
   if (image) {
     const artContainer = document.querySelector('.display__art__container');
     const displayContainer = document.querySelector('.display__container');
-    const displayHeaderTitle = document.querySelector('.display__header__title')
+    const displayHeaderTitle = document.querySelector(
+      '.display__header__title'
+    );
     const body = document.querySelector('.body');
 
     let descriptionHTML = `
@@ -149,12 +144,11 @@ function displaySingleImage(image) {
     `;
     displayContainer.style.backgroundColor = `hsl(${image.color.h}, ${image.color.s}%, ${image.color.l}%)`;
 
-    displayHeaderTitle.textContent = `${image.title}`
+    displayHeaderTitle.textContent = `${image.title}`;
   } else {
     console.error('Invalid image info.');
   }
 }
 
 // Event Listener
-console.log(buildImageInfo(searchUrl));
-// displaySingleImage(image);
+buildImageInfo(searchUrl);

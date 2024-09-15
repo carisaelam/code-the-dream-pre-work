@@ -418,6 +418,10 @@ form select label {
     font-size: clamp(0.75rem, 0.75rem + 1vw, 1rem);
   }
 
+  .display__container {
+    min-height: 100vh;
+  }
+
   .display__art__container {
     display: grid;
     grid-template-columns: 1fr 1fr;
