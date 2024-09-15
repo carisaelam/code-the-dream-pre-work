@@ -280,6 +280,10 @@ form select {
   max-width: 10rem;
   font-size: clamp(0.5rem, 0.5rem + 1vw, 1rem);
 }
+
+.display__header__title {
+  text-align: center;
+}
 .display__header__description__container {
   display: flex;
   justify-content: center;
