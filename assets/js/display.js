@@ -109,7 +109,7 @@ function displaySingleImage(image) {
       </div>
 
     `;
-    displayContainer.style.backgroundColor = `hsl(${image.color.h}, ${image.color.s}%, ${image.color.l}%)`;
+    displayContainer.style.background = `linear-gradient(120deg, hsl(${image.color.h}, ${image.color.s}%, ${image.color.l}%), hsl(${image.color.h}, ${image.color.s}%, ${image.color.l + 20}%))`;
 
     displayHeaderTitle.textContent = `${image.title}`;
   } else {
