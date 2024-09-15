@@ -177,21 +177,24 @@ hgroup .header__title__container {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-
-form input,
-form select {
-  border-radius: 0.75rem;
+  border-radius: 1.5rem;
   border: none;
   background-color: white;
+  padding: 0 0.75rem;
+}
+
+.form__element i {
+  color: grey;
 }
 
 form input {
   padding: 0.18rem 0.5rem;
+  border: none;
 }
 
 form select {
   padding: 0.35rem;
+  border: none;
 }
 
 .gallery__form__submit {
@@ -203,8 +206,18 @@ form select {
 .gallery__form__submit input {
   width: 100%;
   margin-top: 0.75rem;
-  background-color: white;
   border: 1px solid grey;
+  border-radius: 1.75rem;
+  color: white;
+  background-color: rgb(84, 84, 243);
+}
+
+.gallery__form__submit input:hover {
+  color: white;
+  background-color: rgb(0, 0, 255);
+  cursor: pointer;
+  transform: scale(1.02);
+  transition: 0.2s;
 }
 
 .gallery__description__container {

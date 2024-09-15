@@ -99,9 +99,13 @@ function displaySingleImage(image) {
     const artContainer = document.querySelector('.keyword__art__container');
     const body = document.querySelector('.body');
 
-    let descriptionHTML = `<p>No description available. </p><a href="https://www.artic.edu/artworks/${image.id}/" target="_blank">
-    <p>Learn More Here!</p>    
-  </a>`;
+    let descriptionHTML = `
+    <p>No description available. </p>
+    <a href="https://www.artic.edu/artworks/${image.id}/" target="_blank">
+      <p>Learn More Here!</p>    
+    </a>
+    `;
+
     if (image.description) {
       descriptionHTML = ` <h3>Description</h3>
       <p>${image.description}</p>`;
@@ -115,9 +119,7 @@ function displaySingleImage(image) {
 
     artContainer.innerHTML = `
       <img src="${image.url}" alt="${image.title}">
-      
        <h3>${image.title}</h3>    
-     
       
        <a href="http://www.google.com/search?q=${encodeURIComponent(image.artist)}" target="_blank">
          <p>${image.artist}</p>    
@@ -126,8 +128,6 @@ function displaySingleImage(image) {
        ${descriptionHTML}
        ${subjectTitleHTML}
 
-       
-      
     `;
     body.style.backgroundColor = `hsl(${image.color.h}, ${image.color.s}%, ${image.color.l}%)`;
   } else {
