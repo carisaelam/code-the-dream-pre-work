@@ -434,6 +434,7 @@ form select label {
     padding: 1rem;
     border-radius: 1rem;
     min-width: 90%;
+    box-shadow: 0 0 1rem rgb(139, 139, 139);
   }
 
   .display__art__image__container {
