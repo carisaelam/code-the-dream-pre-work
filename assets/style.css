@@ -119,7 +119,7 @@ html {
   margin-bottom: 1rem;
 }
 
-hgroup {
+header {
   display: flex;
   flex-direction: column;
   justify-content: center;
