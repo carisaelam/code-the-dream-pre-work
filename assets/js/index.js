@@ -13,10 +13,27 @@ const galleryForm = document.querySelector('.gallery__form');
 const galleryFormInput = document.getElementById('gallery__form__input');
 const limitForm = document.querySelector('.limit__form');
 const limitFormInput = document.getElementById('limit__form__input');
+
+// HTML/Text elements
 const displayArtDirectionsHTML =
   'Click on each image to learn more about the artwork!';
 const noArtToDisplayText = 'No art to display. Try a different search.';
 
+function displayArtHTML(item) {
+  return `
+      <div class="gallery__image__container"> 
+        <a href="pages/display.html?image_id=${item.imageId}&id=${item.id}">
+          <img src="${image_config}/${item.imageId}/full/843,/0/default.jpg" alt="${item.title}" class="gallery__image" >
+        </a>
+      </div>
+      <div class="gallery__image__information__container">
+        <h3 class="gallery__image__title">${item.title}</h3>      
+        <p class="gallery__image__artist">${item.artist}</p>      
+      </div>
+    `;
+}
+
+// Functions
 async function getArtByArtist() {
   try {
     const response = await fetch(
@@ -54,20 +71,6 @@ function buildArtInfoObject(art) {
   } else {
     alert(noArtToDisplayText);
   }
-}
-
-function displayArtHTML(item) {
-  return `
-      <div class="gallery__image__container"> 
-        <a href="pages/display.html?image_id=${item.imageId}&id=${item.id}">
-          <img src="${image_config}/${item.imageId}/full/843,/0/default.jpg" alt="${item.title}" class="gallery__image" >
-        </a>
-      </div>
-      <div class="gallery__image__information__container">
-        <h3 class="gallery__image__title">${item.title}</h3>      
-        <p class="gallery__image__artist">${item.artist}</p>      
-      </div>
-    `;
 }
 
 function displayArt(list) {
