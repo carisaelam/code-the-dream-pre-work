@@ -88,7 +88,7 @@ function updateArtContainer(image, descriptionHTML) {
   artContainer.innerHTML = `
     
       <div class="display__art__image__container">
-        <img src="${image.url}" alt="This image is not available">
+        <img src="${image.url}" alt="This image is not available" onerror="this.src = 'https://placehold.co/600x400?text=Image+Not+Available' ">
       </div>
      
       <div class="display__art__details__container">
