@@ -6,28 +6,31 @@ The home page features a gallery of artwork displayed in card-like elements with
 
 <hr>
 
-## Images 
+## Images
 
 #### Home page
+
 <img src="/assets/home-page.png" alt="Home page" style="max-width: 500px;">
 
 <br> 
-<br> 
+<br>
 
 #### Gallery View
+
 <img src="/assets/gallery-view.png" alt="Gallery view" style="max-width: 500px;">
 
 <br> 
-<br> 
+<br>
 
 #### Display View
+
 <img src="/assets/display-view.png" alt="Display view" style="max-width: 500px;">
 <br> 
-<br> 
+<br>
 
 #### Display View - Mobile
-<img src="/assets/display-view-mobile.png" alt="Display view mobile" style="max-width: 500px;">
 
+<img src="/assets/display-view-mobile.png" alt="Display view mobile" style="max-width: 500px;">
 
 ## Project Structure
 
@@ -39,9 +42,9 @@ The home page features a gallery of artwork displayed in card-like elements with
 
 ## How to View the Project
 
-You can view this project live **[HERE](carisaelam-artwork-gallery.netlify.app)**. 
+You can view this project live **[HERE](https://carisaelam-artwork-gallery.netlify.app)**.
 
-Or you can follow the below instructions: 
+Or you can follow the below instructions:
 
 1. **Clone the Repository**
 
