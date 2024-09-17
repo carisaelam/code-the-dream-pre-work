@@ -101,10 +101,10 @@ function updateArtContainer(image, descriptionHTML) {
           <h3>${image.artist}</h3>
           </a>
         </div>
+        ${displayDescriptionHTML(descriptionHTML)}
  
       </div>
 
-      ${displayDescriptionHTML(descriptionHTML)}
 
     `;
 }
