@@ -4,7 +4,7 @@ let artList = [];
 let searchTerm = '';
 let limit = 10;
 
-// Document elements
+// DOM elements
 const artContainer = document.querySelector('.art__container');
 const galleryDescriptionContainer = document.querySelector(
   '.gallery__description__container'
@@ -14,7 +14,7 @@ const galleryFormInput = document.getElementById('gallery__form__input');
 const limitForm = document.querySelector('.limit__form');
 const limitFormInput = document.getElementById('limit__form__input');
 
-// HTML/Text elements
+// HTML--Text elements
 const displayArtDirectionsHTML =
   'Click on each image to learn more about the artwork!';
 const noArtToDisplayText = 'No art to display. Try a different search.';
@@ -34,7 +34,9 @@ function displayArtHTML(item) {
 }
 
 // Functions
-async function getArtByArtist() {
+
+// Main API call with dynamic searchTerm and limit
+async function fetchArt() {
   try {
     const response = await fetch(
       `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}&fields=artist_title,image_id,id,title&limit=${limit}`
@@ -48,12 +50,14 @@ async function getArtByArtist() {
   }
 }
 
+// Calls fetchArt and sends data to buildArtInfoObject
 async function handleArtByArtist() {
-  const art = await getArtByArtist();
+  const art = await fetchArt();
   const arts = art.slice(0, limit);
   buildArtInfoObject(arts);
 }
 
+// Builds an object for each piece of art and sends data to displayArt
 function buildArtInfoObject(art) {
   art.forEach((art) => {
     if (art.artist_title && art.image_id) {
@@ -73,6 +77,7 @@ function buildArtInfoObject(art) {
   }
 }
 
+// Updates DOM to display each piece of art and clears artList array
 function displayArt(list) {
   artContainer.innerHTML = '';
   galleryDescriptionContainer.textContent = displayArtDirectionsHTML;

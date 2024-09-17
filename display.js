@@ -10,7 +10,7 @@ const imageId = urlParams.get('image_id');
 const id = urlParams.get('id');
 const searchUrl = `${ENDPOINT}/${id}/?${FIELDS}`;
 
-// Document elements
+// DOM elements
 const artContainer = document.querySelector('.display__art__container');
 const displayContainer = document.querySelector('.display__container');
 const displayHeaderTitle = document.querySelector('.display__header__title');
