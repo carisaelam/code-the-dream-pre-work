@@ -30,7 +30,7 @@ function buildDescriptionHTML(image) {
 }
 
 function displayDescriptionHTML(descriptionHTML) {
-  return `<div class="display__art__description__container">${descriptionHTML}</div>;`;
+  return `<div class="display__art__description__container">${descriptionHTML}</div>`;
 }
 
 // Functions
