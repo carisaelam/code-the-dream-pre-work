@@ -21,15 +21,15 @@ const noArtToDisplayText = 'No art to display. Try a different search.';
 
 function displayArtHTML(item) {
   return `
+  <a href="display.html?image_id=${item.imageId}&id=${item.id}">
       <div class="gallery__image__container"> 
-        <a href="display.html?image_id=${item.imageId}&id=${item.id}">
-          <img src="${image_config}/${item.imageId}/full/843,/0/default.jpg" alt="Image unavailable at this time" onerror="this.style.display='none'" class="gallery__image" >
-        </a>
+          <img src="${image_config}/${item.imageId}/full/843,/0/default.jpg" alt="Image unavailable at this time" onerror="this.style.display='none'"class="gallery__image" >
+          </div>
+          <div class="gallery__image__information__container">
+          <h3 class="gallery__image__title">${item.title}</h3>      
+          <p class="gallery__image__artist">${item.artist}</p>      
       </div>
-      <div class="gallery__image__information__container">
-        <h3 class="gallery__image__title">${item.title}</h3>      
-        <p class="gallery__image__artist">${item.artist}</p>      
-      </div>
+  </a>
     `;
 }
 

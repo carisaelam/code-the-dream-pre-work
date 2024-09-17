@@ -88,7 +88,7 @@ function updateArtContainer(image, descriptionHTML) {
   artContainer.innerHTML = `
     
       <div class="display__art__image__container">
-        <img src="${image.url}" alt="${image.title}">
+        <img src="${image.url}" alt="This image is not available">
       </div>
      
       <div class="display__art__details__container">

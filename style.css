@@ -273,6 +273,11 @@ form select label {
   transition: 0.3s;
 }
 
+.gallery__artwork__container a {
+  text-decoration: none;
+  color: black;
+}
+
 .gallery__image__container {
   max-width: 25rem;
   height: auto;
@@ -286,6 +291,7 @@ form select label {
   align-items: center;
   padding: 1rem;
 }
+
 .gallery__image__title {
   font-size: clamp(0.75rem, 0.75rem + 1vw, 2rem);
 }
