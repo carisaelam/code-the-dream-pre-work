@@ -242,6 +242,7 @@ form select label {
   align-items: center;
   text-align: center;
   font-size: clamp(0.75rem, 0.75rem + 1vw, 2rem);
+  font-weight: bold;
 }
 .art__container {
   display: flex;
