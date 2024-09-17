@@ -15,17 +15,39 @@ const artContainer = document.querySelector('.display__art__container');
 const displayContainer = document.querySelector('.display__container');
 const displayHeaderTitle = document.querySelector('.display__header__title');
 
+// HTML--Text elements
+function buildDescriptionHTML(image) {
+  const descriptionHTML = image.description
+    ? ` <h3>Description</h3><p>${image.description}</p>`
+    : `<div class="display__no__description__container">
+        <p>No description available. </p>
+        <a href="https://www.artic.edu/artworks/${image.id}/" target="_blank">
+          <p>Learn More Here!</p>
+        </a>
+      </div>
+    `;
+  return descriptionHTML;
+}
+
+function displayDescriptionHTML(descriptionHTML) {
+  return `<div class="display__art__description__container">${descriptionHTML}</div>;`;
+}
+
 // Functions
+
+// Main API call
 async function fetchData(url) {
   const response = await fetch(url);
   if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
   return response.json();
 }
 
+// Builds url based on configuration and image_id settings
 function buildImageUrl(config, imageId) {
   return `${config}/${imageId}/${IMAGE_REQUEST_PARAMS}`;
 }
 
+// Builds image object based on fetched data and passes it to displaySingleImage
 async function buildImageInfo(imageUrl) {
   try {
     data = await fetchData(imageUrl);
@@ -61,31 +83,9 @@ async function buildImageInfo(imageUrl) {
   }
 }
 
-function displayArt(imageInfo) {
-  if (imageInfo) {
-    artContainer.innerHTML = `
-      <img src="${imageInfo.url}" alt="${imageInfo.title}">
-      <h3>${imageInfo.title}</h3>
-      <p>${imageInfo.artist}</p>
-    `;
-  } else {
-    console.error('Invalid image info.');
-  }
-}
-
-function displaySingleImage(image) {
-  if (image) {
-    const descriptionHTML = image.description
-      ? ` <h3>Description</h3><p>${image.description}</p>`
-      : `<div class="display__no__description__container">
-      <p>No description available. </p>
-      <a href="https://www.artic.edu/artworks/${image.id}/" target="_blank">
-        <p>Learn More Here!</p>
-      </a>
-    </div>
-    `;
-
-    artContainer.innerHTML = `
+// Updates innerHTML of artContainer with image details
+function updateArtContainer(image, descriptionHTML) {
+  artContainer.innerHTML = `
     
       <div class="display__art__image__container">
         <img src="${image.url}" alt="${image.title}">
@@ -101,17 +101,27 @@ function displaySingleImage(image) {
           <h3>${image.artist}</h3>
           </a>
         </div>
-     
-        <div class="display__art__description__container">
-          ${descriptionHTML}
-        </div>
  
       </div>
 
-    `;
-    displayContainer.style.background = `linear-gradient(120deg, hsl(${image.color.h}, ${image.color.s}%, ${image.color.l}%), hsl(${image.color.h}, ${image.color.s}%, ${image.color.l + 20}%))`;
+      ${displayDescriptionHTML(descriptionHTML)}
 
-    displayHeaderTitle.textContent = `${image.title}`;
+    `;
+}
+
+// Updates background color based on color data from image
+function updateDisplayContainerStyles(image) {
+  displayContainer.style.background = `linear-gradient(120deg, hsl(${image.color.h}, ${image.color.s}%, ${image.color.l}%), hsl(${image.color.h}, ${image.color.s}%, ${image.color.l + 20}%))`;
+
+  displayHeaderTitle.textContent = `${image.title}`;
+}
+
+// Calls helper functions to display the single selected image
+function displaySingleImage(image) {
+  if (image) {
+    descriptionHTML = buildDescriptionHTML(image);
+    updateArtContainer(image, descriptionHTML);
+    updateDisplayContainerStyles(image);
   } else {
     console.error('Invalid image info.');
   }
