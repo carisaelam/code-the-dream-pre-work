@@ -23,7 +23,7 @@ function displayArtHTML(item) {
   return `
       <div class="gallery__image__container"> 
         <a href="display.html?image_id=${item.imageId}&id=${item.id}">
-          <img src="${image_config}/${item.imageId}/full/843,/0/default.jpg" alt="${item.title}" class="gallery__image" >
+          <img src="${image_config}/${item.imageId}/full/843,/0/default.jpg" alt="Image unavailable at this time" onerror="this.style.display='none'" class="gallery__image" >
         </a>
       </div>
       <div class="gallery__image__information__container">
